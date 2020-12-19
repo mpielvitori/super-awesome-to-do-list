@@ -1,0 +1,27 @@
+version: '2'
+services:
+  sa-todo-api:
+    build: ./sa-todo-api
+    container_name: sa-todo-api
+    hostname: 'sa-todo-api'
+    networks:
+    - sa-todo.net
+    volumes:
+    - ./sa-todo-api/src:/sa-todo-api/src
+    ports:
+    - 3000:3000
+    depends_on:
+    - mongodb
+  db:
+    image: mongo:4.2.1
+    container_name: sa-todo-db
+    hostname: 'sa-todo-db'
+    volumes:
+    - .data/db:/data/db
+    networks:
+    - sa-todo.net
+    ports:
+    - 27017:27017
+networks:
+  sa-todo.net:
+    driver: bridge
