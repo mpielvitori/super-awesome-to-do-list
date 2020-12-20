@@ -24,13 +24,13 @@ services:
    sa-todo-web:
     build:
       context: ./super-awesome-to-do-list-5000
-      dockerfile: .docker/nginx.dockerfile
+      dockerfile: .docker/angular-cli.Dockerfile
     container_name: sa-todo-web
     hostname: 'sa-todo-web'
     networks:
     - sa-todo.net
-    volumes:
-    - ./super-awesome-to-do-list-5000/dist/material-to-do-list:/usr/share/nginx/html
+    # volumes:
+    # - ./super-awesome-to-do-list-5000/dist:/usr/share/nginx/html
     ports:
     - 80:80
     - 443:443
