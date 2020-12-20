@@ -1,3 +1,4 @@
 [submodule "super-awesome-to-do-list-5000"]
 	path = super-awesome-to-do-list-5000
 	url = https://github.com/LoginowArthur/super-awesome-to-do-list-5000.git
+  ignore = all
