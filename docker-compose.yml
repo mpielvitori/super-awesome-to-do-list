@@ -27,7 +27,7 @@ services:
         - NODE_VERSION
         - ANGULAR_CLI_VERSION
       context: ./super-awesome-to-do-list-5000
-      dockerfile: .docker/ngserve.Dockerfile
+      dockerfile: .docker/${UI_DOCKERFILE}.Dockerfile
     container_name: sa-todo-web
     hostname: 'sa-todo-web'
     networks:

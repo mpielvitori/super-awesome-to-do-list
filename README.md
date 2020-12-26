@@ -2,5 +2,10 @@
 
 ### Start local environment
 ```sh
-docker-compose --env-file ./config/.env.dev up --build --remove-orphans
+make startLocal
+```
+
+### Start local environment using ng build
+```sh
+UI_DOCKERFILE=ngbuild make startLocal
 ```
