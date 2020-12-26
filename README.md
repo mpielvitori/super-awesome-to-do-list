@@ -1,11 +1,13 @@
 # Super awesome TODO list
 
-### Start local environment
+## Local environment
+### Start
 ```sh
 make startLocal
 ```
-
-### Start local environment using ng build
+### Start using ng build
 ```sh
 UI_DOCKERFILE=ngbuild make startLocal
 ```
+### Usage
+[link](http://localhost/)
