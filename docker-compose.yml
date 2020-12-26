@@ -1,27 +1,5 @@
 services:
-  # sa-todo-api:
-  #   build: ./sa-todo-api
-  #   container_name: sa-todo-api
-  #   hostname: 'sa-todo-api'
-  #   networks:
-  #   - sa-todo.net
-  #   volumes:
-  #   - ./sa-todo-api/src:/sa-todo-api/src
-  #   ports:
-  #   - 3000:3000
-  #   links:
-  #   - mongodb
-  # db:
-  #   image: mongo:4.2.1
-  #   container_name: sa-todo-db
-  #   hostname: 'sa-todo-db'
-  #   volumes:
-  #   - .data/db:/data/db
-  #   networks:
-  #   - sa-todo.net
-  #   ports:
-  #   - 27017:27017
-   sa-todo-web:
+  sa-todo-web:
     build:
       args:
         - NODE_VERSION
@@ -29,7 +7,6 @@ services:
       context: ./super-awesome-to-do-list-5000
       dockerfile: .docker/${UI_DOCKERFILE}.Dockerfile
     container_name: sa-todo-web
-    hostname: 'sa-todo-web'
     networks:
     - sa-todo.net
     volumes:
@@ -40,6 +17,32 @@ services:
     - ./super-awesome-to-do-list-5000/src:/app/src
     ports:
     - 80:80
+  sa-todo-api:
+    build:
+      # args:
+      #   - NODE_VERSION
+      context: ./super-awesome-to-do-list-api
+      dockerfile: .docker/Dockerfile
+    container_name: sa-todo-api
+    networks:
+    - sa-todo.net
+    volumes:
+    - ./super-awesome-to-do-list-api/src:/app/src
+    ports:
+    - 3000:3000
+    links:
+    - sa-todo-db
+  sa-todo-db:
+    build:
+      context: ./super-awesome-to-do-list-db
+      dockerfile: .docker/Dockerfile
+    container_name: sa-todo-db
+    volumes:
+    - ./super-awesome-to-do-list-db/.data/db:/data/db
+    networks:
+    - sa-todo.net
+    ports:
+    - 27017:27017
 networks:
   sa-todo.net:
     driver: bridge

@@ -5,6 +5,8 @@
 [submodule "super-awesome-to-do-list-api"]
 	path = super-awesome-to-do-list-api
 	url = https://github.com/mpielvitori/super-awesome-to-do-list-api.git
+  ignore = all
 [submodule "super-awesome-to-do-list-db"]
 	path = super-awesome-to-do-list-db
 	url = https://github.com/mpielvitori/super-awesome-to-do-list-db.git
+  ignore = all
