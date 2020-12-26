@@ -23,17 +23,23 @@ services:
   #   - 27017:27017
    sa-todo-web:
     build:
+      args:
+        - NODE_VERSION
+        - ANGULAR_CLI_VERSION
       context: ./super-awesome-to-do-list-5000
-      dockerfile: .docker/angular-cli.Dockerfile
+      dockerfile: .docker/ngserve.Dockerfile
     container_name: sa-todo-web
     hostname: 'sa-todo-web'
     networks:
     - sa-todo.net
-    # volumes:
+    volumes:
+    # empty volume mapping for debugging purposes
+    # - /usr/share/nginx/html/node_modules
+    # - ./super-awesome-to-do-list-5000/:/build/dist
     # - ./super-awesome-to-do-list-5000/dist:/usr/share/nginx/html
+    - ./super-awesome-to-do-list-5000/src:/app/src
     ports:
     - 80:80
-    - 443:443
 networks:
   sa-todo.net:
     driver: bridge
