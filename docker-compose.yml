@@ -2,7 +2,7 @@ services:
   sa-todo-web:
     build:
       args:
-        - NODE_VERSION
+        - NODE_BUILDER_VERSION
         - ANGULAR_CLI_VERSION
       context: ./super-awesome-to-do-list-5000
       dockerfile: .docker/${UI_DOCKERFILE}.Dockerfile
@@ -19,8 +19,8 @@ services:
     - 80:80
   sa-todo-api:
     build:
-      # args:
-      #   - NODE_VERSION
+      args:
+        - NODE_VERSION
       context: ./super-awesome-to-do-list-api
       dockerfile: .docker/Dockerfile
     container_name: sa-todo-api
