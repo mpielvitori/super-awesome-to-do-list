@@ -1,5 +1,6 @@
 services:
   sa-todo-web:
+    restart: always
     build:
       args:
         - NODE_BUILDER_VERSION
@@ -18,6 +19,7 @@ services:
     ports:
     - 80:80
   sa-todo-api:
+    restart: always
     build:
       args:
         - NODE_VERSION
@@ -33,6 +35,7 @@ services:
     links:
     - sa-todo-db
   sa-todo-db:
+    restart: always
     build:
       context: ./super-awesome-to-do-list-db
       dockerfile: .docker/Dockerfile
